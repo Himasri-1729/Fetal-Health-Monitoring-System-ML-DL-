@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fetal Health Prediction Results</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #eef2f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        .result-box {
+            background-color: #f6f9fc;
+            border: 2px dashed #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 10px;
+            color: #34495e;
+        }
+        .btn {
+            text-decoration: none;
+            padding: 12px 24px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Results</h1>
+
+        <div class="result-box">
+            🧠 <strong>ML Model Result:</strong> {{ ml_result }}
+        </div>
+
+        <a href="/" class="btn">Predict Again</a>
+    </div>
+</body>
+</html>

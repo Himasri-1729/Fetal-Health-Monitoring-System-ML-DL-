@@ -1,0 +1,293 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fetal Health Prediction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-image: url("{% static 'fetal_pro/images/background.png' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            color: #000;
+        }
+
+        header {
+            background-color: transparent;
+            border-bottom: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 30px;
+            margin-right: -4%;
+            transform: translateX(60px);
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 600;
+            padding: 10px 0;
+            background-color: transparent;
+            border-radius: 0;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: #000;
+            background-color: transparent;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 100px 10%;
+            background-color: transparent;
+        }
+
+        .hero-text {
+            max-width: 50%;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: #60a5fa;
+        }
+
+        .hero-text p {
+            margin: 20px 0;
+            font-size: 18px;
+            color: #0e0f0f;
+        }
+
+        .hero-text button {
+            background-color: #60a5fa;
+            color: #080808;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .hero-text button:hover {
+            background-color: #3b82f6;
+        }
+
+        .content {
+            display: none;
+            padding-top: 100px;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 100px auto;
+            padding: 40px 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            color: #000;
+        }
+
+        input, select, button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            background-color: #fff;
+            color: #000;
+        }
+
+        button[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        h2, h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #60a5fa;
+        }
+
+        ul {
+            padding-left: 20px;
+            font-size: 17px;
+            line-height: 1.6;
+            color: #0e0f0f;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            background-color: #0d1117;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <!-- ✅ Logo with text -->
+    <div class="logo">
+        <img src="{% static 'fetal_pro/images/logo.png' %}" alt="Logo" style="height: 40px;">
+        <span>Fetal Health Monitoring</span>
+    </div>
+    <div class="navbar">
+        <a href="#" onclick="showSection(event, 'ml')" class="{% if active_section == 'ml' %}active{% endif %}">Health Check</a>
+        <a href="#" onclick="showSection(event, 'dl')" class="{% if active_section == 'dl' %}active{% endif %}">Scan Check</a>
+        <a href="#" onclick="showSection(event, 'home')" class="{% if active_section == 'home' %}active{% endif %}">Home</a>
+    </div>
+</header>
+
+<!-- Home Section -->
+<div id="home" class="content {% if active_section == 'home' %}active{% endif %}">
+    <section class="hero" id="hero">
+        <div class="hero-text">
+            <h1>
+                <span style="color: black;">Fetal Health<br>Has Become</span> <span>Easy</span>
+            </h1>
+            <p>"A step closer to safer pregnancy — assess fetal health instantly".</p>
+            <button onclick="showSection(event, 'ml')">Let’s Get Started</button>
+
+            <!-- Our Services -->
+            <div style="margin-top: 60px;">
+                <h2 style="text-align: left;">Our Services</h2>
+                <ul>
+                    <li>Fetal health prediction using Machine Learning</li>
+                    <li>Ultrasound scan analysis via Deep Learning</li>
+                    <li>Real-time risk detection and alerts</li>
+                    <li>Secure and private health assessments</li>
+                    <li>Visual insights from medical imaging</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ML Prediction Section -->
+<div id="ml" class="content {% if active_section == 'ml' %}active{% endif %}">
+    <div class="container">
+        <h2>Share a Few details - We'll Handle The Rest</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="form_type" value="ml">
+            <input type="text" name="baseline_value" placeholder="Baseline Value" required>
+            <input type="text" name="accelerations" placeholder="Accelerations" required>
+            <input type="text" name="fetal_movement" placeholder="Fetal Movement" required>
+            <input type="text" name="uterine_contractions" placeholder="Uterine Contractions" required>
+            <input type="text" name="light_decelerations" placeholder="Light Decelerations" required>
+            <input type="text" name="severe_decelerations" placeholder="Severe Decelerations" required>
+            <input type="text" name="prolongued_decelerations" placeholder="Prolongued Decelerations" required>
+            <input type="text" name="abnormal_short_term_variability" placeholder="Abnormal STV" required>
+            <input type="text" name="mean_value_of_short_term_variability" placeholder="Mean STV" required>
+            <input type="text" name="percentage_of_time_with_abnormal_long_term_variability" placeholder="Abnormal LTV (%)" required>
+            <input type="text" name="mean_value_of_long_term_variability" placeholder="Mean LTV" required>
+            <input type="text" name="histogram_width" placeholder="Histogram Width" required>
+            <input type="text" name="histogram_min" placeholder="Histogram Min" required>
+            <input type="text" name="histogram_max" placeholder="Histogram Max" required>
+            <input type="text" name="histogram_number_of_peaks" placeholder="Histogram Peaks" required>
+            <input type="text" name="histogram_number_of_zeroes" placeholder="Histogram Zeroes" required>
+            <input type="text" name="histogram_mode" placeholder="Histogram Mode" required>
+            <input type="text" name="histogram_mean" placeholder="Histogram Mean" required>
+            <input type="text" name="histogram_median" placeholder="Histogram Median" required>
+            <input type="text" name="histogram_variance" placeholder="Histogram Variance" required>
+            <input type="text" name="histogram_tendency" placeholder="Histogram Tendency" required>
+            <button type="submit">Result</button>
+        </form>
+        {% if ml_result %}
+            <h3>Result: {{ ml_result }}</h3>
+        {% endif %}
+
+        {% if ml_suggestions %}
+            <div class="container" style="margin-top: 20px;">
+                <h3>Suggestions</h3>
+                <ul>
+                    {% for suggestion in ml_suggestions %}
+                        <li>{{ suggestion }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- DL Prediction Section -->
+<div id="dl" class="content {% if active_section == 'dl' %}active{% endif %}">
+    <div class="container">
+        <h2>Upload Your Scan</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="form_type" value="dl">
+            <input type="file" name="fetal_image" accept="image/*" required>
+            <button type="submit">Result</button>
+        </form>
+        {% if dl_result %}
+            <h3>Result: {{ dl_result }}</h3>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    function showSection(event, id) {
+        event.preventDefault();
+
+        const sections = document.querySelectorAll('.content');
+        sections.forEach(sec => sec.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+
+        const links = document.querySelectorAll('.navbar a');
+        links.forEach(link => link.classList.remove('active'));
+        event.target.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
