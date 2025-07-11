@@ -4,4 +4,4 @@ The Fetal Health Monitoring System is an AI-driven diagnostic tool developed to 
 
 ![Login Screenshot](https://github.com/Himasri-1729/Fetal-Health-Monitoring-System-ML-DL-/blob/main/Screenshot%202025-07-11%20183803.png?raw=true)
 
-![Login Screenshot](https://github.com/Himasri-1729/Fetal-Health-Monitoring-System-ML-DL-/blob/main/Screenshot%202025-07-11%20183814.p>?ngraw=true)
+![Login Screenshot](https://github.com/Himasri-1729/Fetal-Health-Monitoring-System-ML-DL-/blob/main/Screenshot%202025-07-11%20183814.png?raw=true)
